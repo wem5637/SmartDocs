@@ -1,5 +1,5 @@
 {
-  "name": "capstone",
+  "name": "SmartDocs",
   "version": "0.0.1",
   "description": "A happy little skeleton.",
   "main": "index.js",
@@ -43,6 +43,7 @@
   },
   "homepage": "https://github.com/queerviolet/bones#readme",
   "dependencies": {
+    "@google-cloud/language": "^0.10.5",
     "axios": "^0.15.2",
     "babel-preset-stage-2": "^6.18.0",
     "bcryptjs": "^2.4.0",
