@@ -9,6 +9,7 @@ import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
+import EditorContainer from './containers/EditorContainer'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -26,8 +27,9 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
-        <IndexRedirect to="/jokes" />
+        <IndexRedirect to="/editor" />
         <Route path="/jokes" component={Jokes} />
+        <Route path="/editor" component={EditorContainer} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
