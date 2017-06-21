@@ -2,9 +2,73 @@
 import React from 'react'
 import {Router, Route, Link, IndexRedirect, browserHistory} from 'react-router'
 import {render} from 'react-dom'
+
 import WhoAmI from './components/WhoAmI'
-import Landing from './components/Landing'
 import NotFound from './components/NotFound'
+<<<<<<< HEAD
+import SignupContainer from './containers/SignupContainer'
+import EditorContainer from './containers/EditorContainer'
+
+const ExampleApp = connect(
+  ({ auth }) => ({ user: auth })
+)(
+  ({ user, children }) =>
+    <div>
+      <nav className="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div className="container">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                Menu <i className="fa fa-bars"></i>
+            </button>
+            <a className="navbar-brand page-scroll" href="#page-top">
+                <i className="fa fa-play-circle"></i> <span className="light">Start</span> SmartDocs
+            </a>
+          </div>
+
+          <div className="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul className="nav navbar-nav">
+              <li className="hidden">
+                  <a href="#page-top"></a>
+              </li>
+              <li>
+                  <Link to='/about' className="page-scroll">About</Link>
+              </li>
+              {user ? <WhoAmI/>
+              : <span>
+                  <li>
+                    <Link to='/login' className="page-scroll">Login</Link>
+                  </li>
+                  <li>
+                      <Link to='/signup' className="page-scroll">Sign Up</Link>
+                  </li>
+                </span>
+              }
+                <li>
+                    <Link to='/contact' className="page-scroll">Contact</Link>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      {children}
+    </div>
+)
+
+render(
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={ExampleApp}>
+        <IndexRedirect to="/landing" />
+        <Route path='/login' component={Login} />
+        <Route path='/signup' component={SignupContainer} />
+        <Route path="/landing" component={Landing} />
+        <Route path="/editor" component={EditorContainer} />
+      </Route>
+      <Route path='*' component={NotFound} />
+    </Router>
+  </Provider>,
+=======
+
 import firebase from 'APP/fire'
 
 import Demos from 'APP/demos'
@@ -40,51 +104,11 @@ auth.onAuthStateChanged(user => user || auth.signInAnonymously())
 // and whatever children the router gave us.
 const App = ({children}) =>
   <div>
-    <nav className="navbar navbar-custom navbar-fixed-top" role="navigation">
-      <div className="container">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                Menu <i className="fa fa-bars"></i>
-            </button>
-            <a className="navbar-brand page-scroll" href="#page-top">
-                <i className="fa fa-play-circle"></i> <span className="light">Start</span> SmartDocs
-            </a>
-          </div>
-          <div className="navbar-header">
-            <ul className="nav navbar-nav">
-              <li className="hidden">
-                  <a href="#page-top"></a>
-              </li>
-              <li>
-                  <Link to='/about' className="page-scroll">About</Link>
-              </li>
-              <li>
-                  <Link to='/contact' className="page-scroll">Contact</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul className="nav navbar-nav">
-              <li className="hidden">
-                  <a href="#page-top"></a>
-              </li>
-              <li>
-                  <Link to='/about' className="page-scroll">About</Link>
-              </li>
-              {/* WhoAmI takes a firebase auth API and renders either a
+    <nav>
+      {/* WhoAmI takes a firebase auth API and renders either a
           greeting and a logout button, or sign in buttons, depending
           on if anyone's logged in */}
-              <li>
-                <WhoAmI auth={auth}/>
-              </li>
-                <li>
-                    <Link to='/contact' className="page-scroll">Contact</Link>
-                </li>
-            </ul>
-          </div>
-        </div>
-
+      <WhoAmI auth={auth}/>
     </nav>
     {/* Render our children (whatever the router gives us) */}
     {children}
@@ -93,13 +117,11 @@ const App = ({children}) =>
 render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRedirect to="/landing"/>
-      <Route path='/landing' component={Landing}/>
-      <Route path='/demos'>
+      <IndexRedirect to="demos"/>
       {Demos /* Put all the demos and a description page at /demos */}
-      </Route>
     </Route>
     <Route path='*' component={NotFound}/>
   </Router>,
+>>>>>>> 87c9348afedc17618f9ac8f2428e8e153db15298
   document.getElementById('main')
 )
