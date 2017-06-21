@@ -8,6 +8,7 @@ import store from './store'
 import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
+import Landing from './components/Landing'
 import NotFound from './components/NotFound'
 import EditorContainer from './containers/EditorContainer'
 
@@ -27,8 +28,8 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
-        <IndexRedirect to="/editor" />
-        <Route path="/jokes" component={Jokes} />
+        <IndexRedirect to="/landing" />
+        <Route path="/landing" component={Landing} />
         <Route path="/editor" component={EditorContainer} />
       </Route>
       <Route path='*' component={NotFound} />
