@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import Editor from '../components/Editor'
 
 const mapState = (state) => ({
-	
-});
+})
 
 const mapDispatch = (dispatch) => {
   return {
@@ -12,5 +11,4 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-
-export default connect(mapState, mapDispatch)(Editor);
+export default connect(mapState, mapDispatch)(Editor)
